@@ -10,6 +10,10 @@
             font-family: Arial, sans-serif;
             background-color: black;
             color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
         }
         header {
             display: flex;
@@ -19,29 +23,45 @@
             background-color: #1a1a1a;
         }
         .title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
         }
         .views {
-            font-size: 14px;
+            font-size: 12px;
             color: #00ff00;
         }
         main {
-            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 10px;
+            flex: 1;
+            overflow-y: auto;
         }
         section {
-            margin-bottom: 20px;
+            margin: 5px;
+            flex: 1 1 300px;
+            max-width: 300px;
         }
         h2 {
             color: #ff9900;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        p, ul {
+            font-size: 12px;
+            margin: 5px 0;
         }
         .badges img {
-            margin: 5px;
+            margin: 3px;
+            max-height: 30px;
         }
         footer {
             text-align: center;
-            padding: 10px;
+            padding: 5px;
             background-color: #1a1a1a;
+            font-size: 10px;
             color: #888;
         }
     </style>
