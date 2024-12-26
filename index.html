@@ -45,11 +45,20 @@
             color: #888;
         }
     </style>
+    <script>
+        async function fetchViews() {
+            const response = await fetch('https://api.example.com/profile-views');
+            const data = await response.json();
+            document.getElementById('view-counter').textContent = data.views;
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchViews);
+    </script>
 </head>
 <body>
     <header>
         <div class="title">Vishal Soni - GitHub Profile</div>
-        <div class="views">Total Views: <span id="view-counter">1234</span></div>
+        <div class="views">Total Views: <span id="view-counter">Loading...</span></div>
     </header>
     <main>
         <section>
@@ -59,28 +68,23 @@
         </section>
         <section>
             <h2>🚀 Skills</h2>
-            <div class="badges">
-                <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
-                <img src="https://img.shields.io/badge/Python-%2314354C.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-                <img src="https://img.shields.io/badge/TypeScript-%232B7489.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-                <img src="https://img.shields.io/badge/SQL-%2300758F.svg?style=for-the-badge&logo=postgresql&logoColor=white" alt="SQL">
-                <img src="https://img.shields.io/badge/AWS-%23232F3E.svg?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS">
-                <img src="https://img.shields.io/badge/Azure-%230072C6.svg?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure">
-                <img src="https://img.shields.io/badge/Docker-%232496ED.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
-                <img src="https://img.shields.io/badge/Kubernetes-%23326CE5.svg?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes">
-                <img src="https://img.shields.io/badge/Terraform-%23623CE4.svg?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform">
-                <img src="https://img.shields.io/badge/GraphQL-%23E10098.svg?style=for-the-badge&logo=graphql&logoColor=white" alt="GraphQL">
-            </div>
+            <ul>
+                <li><strong>Programming Languages</strong>: Proficient in JavaScript (ES6+), Python (Flask, Django), TypeScript, SQL (PostgreSQL, MySQL)</li>
+                <li><strong>Cloud Architecture</strong>: Expertise in AWS services including Lambda, EC2, S3, and managed Kubernetes with EKS; skilled in Azure cloud solutions using AKS.</li>
+                <li><strong>Infrastructure as Code (IaC)</strong>: Strong proficiency in Pulumi and Terraform for automated infrastructure provisioning; experience with AWS CloudFormation for templating.</li>
+                <li><strong>Containerization & Orchestration</strong>: Advanced knowledge of Docker for containerization, Kubernetes for orchestration, Argo CD for GitOps workflows, and Podman for managing container lifecycles.</li>
+                <li><strong>API Development</strong>: Experienced in designing and developing RESTful APIs and GraphQL endpoints, utilizing API Gateway for routing and management.</li>
+            </ul>
         </section>
         <section>
             <h2>🛠️ Workflow & Tools</h2>
             <div class="badges">
-                <img src="https://img.shields.io/badge/Git-%23F05032.svg?style=for-the-badge&logo=git&logoColor=white" alt="Git">
-                <img src="https://img.shields.io/badge/Linux-%23FCC624.svg?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
-                <img src="https://img.shields.io/badge/Bash-%234EAA25.svg?style=for-the-badge&logo=gnubash&logoColor=white" alt="Bash">
+                <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+                <img src="https://img.shields.io/badge/Python-%2314354C.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python">
                 <img src="https://img.shields.io/badge/Node.js-%23339933.svg?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
-                <img src="https://img.shields.io/badge/Vim-%23011A34.svg?style=for-the-badge&logo=vim&logoColor=white" alt="Vim">
-                <img src="https://img.shields.io/badge/VS%20Code-%23007ACC.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code">
+                <img src="https://img.shields.io/badge/TypeScript-%232B7489.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+                <img src="https://img.shields.io/badge/Bash-%234EAA25.svg?style=for-the-badge&logo=gnubash&logoColor=white" alt="Bash">
+                <!-- Add more badges as needed -->
             </div>
         </section>
         <section>
