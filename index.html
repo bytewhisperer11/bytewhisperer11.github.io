@@ -3,113 +3,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishal Soni</title>
+    <title>Terminal Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            position: relative;
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
-        header {
-            text-align: center;
-            padding: 20px;
+        
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
         }
-        h1, h2 {
+        
+        .terminal {
+            font-family: 'Courier New', monospace;
+            background-color: #1a1a1a;
             color: #00ff00;
+            height: 100vh;
+            overflow-y: auto;
+            scrollbar-width: none;
         }
-        .section {
-            padding: 20px;
-            border-bottom: 1px solid #333;
+        
+        .terminal::-webkit-scrollbar {
+            display: none;
         }
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        
+        .command {
+            color: #00ffff;
         }
-        .badge {
-            display: inline-block;
-            padding: 10px;
-            background: #333;
-            border-radius: 5px;
-            font-size: 0.9em;
-            margin: 5px;
+        
+        .error {
+            color: #ff5555;
         }
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+        
+        .success {
+            color: #55ff55;
         }
-        .stats img {
-            max-width: 100%;
-            height: auto;
-            margin: 10px;
+        
+        .highlight {
+            color: #ffff55;
         }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #111;
-            color: #888;
+        
+        .info {
+            color: #5555ff;
         }
-        /* India flag positioning */
-        .india-flag {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: auto;
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid #00ff00;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
         }
     </style>
 </head>
-<body>
-    <!-- India Flag -->
-    <img class="india-flag" src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="India Flag">
-
-    <header>
-        <h1>Hello! 👋 I'm Vishal Soni</h1>
-        <p>Seasoned <b>Software Engineer</b> specializing in <b>backend development</b>, <b>DevOps</b>, and <b>cloud infrastructure</b>.</p>
-    </header>
-
-    <div class="section">
-        <h2>🚀 Skills</h2>
-        <div class="skills-grid">
-            <div class="badge">JavaScript (ES6+)</div>
-            <div class="badge">Python (Flask, Django)</div>
-            <div class="badge">TypeScript</div>
-            <div class="badge">SQL (PostgreSQL, MySQL)</div>
-            <div class="badge">AWS (Lambda, EC2, S3)</div>
-            <div class="badge">Azure (AKS)</div>
-            <div class="badge">Pulumi</div>
-            <div class="badge">Docker</div>
-            <div class="badge">Kubernetes</div>
-            <div class="badge">Argo CD</div>
-            <div class="badge">RESTful APIs</div>
-            <div class="badge">GraphQL</div>
+<body class="bg-black text-white">
+    <div class="terminal p-4 md:p-8 max-w-4xl mx-auto">
+        <div class="mb-4">
+            <div class="flex items-center">
+                <div class="bg-red-500 w-3 h-3 rounded-full mr-2"></div>
+                <div class="bg-yellow-500 w-3 h-3 rounded-full mr-2"></div>
+                <div class="bg-green-500 w-3 h-3 rounded-full"></div>
+                <div class="ml-4 text-gray-400">terminal-portfolio</div>
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <div class="typewriter text-xl mb-2" style="animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;">
+                Welcome to my terminal portfolio!
+            </div>
+            <div class="text-gray-400 mb-4">
+                Type <span class="command">help</span> to see available commands
+            </div>
+        </div>
+        
+        <div id="output" class="mb-4">
+            <div class="flex items-start mb-2">
+                <span class="text-green-500 mr-2">$</span>
+                <span id="input-line" class="flex-1"></span>
+            </div>
+        </div>
+        
+        <div class="flex items-center">
+            <span class="text-green-500 mr-2">$</span>
+            <input id="command-input" type="text" class="bg-transparent border-none outline-none flex-1 text-green-500" autofocus>
+            <span class="cursor-blink">|</span>
         </div>
     </div>
 
-    <div class="section">
-        <h2>📈 GitHub Stats</h2>
-        <div class="stats">
-            <img src="https://github-readme-stats.vercel.app/api?username=bytewhisperer11&show_icons=true&theme=dark" alt="Vishal's GitHub Stats">
-            <img src="https://github-readme-streak-stats.herokuapp.com/?user=bytewhisperer11" alt="GitHub Streak">
+    <!-- Hidden content sections -->
+    <div id="about-content" class="hidden">
+        <div class="mb-4">
+            <div class="text-xl highlight">ABOUT ME</div>
+            <div class="mt-2">
+                I'm a full-stack developer and AI/ML engineer with expertise in building scalable systems and intelligent applications.
+            </div>
+        </div>
+        <div class="mb-2">
+            <div class="text-lg success">CORE SKILLS</div>
+            <ul class="list-disc pl-5 mt-2">
+                <li>Full-stack development with TypeScript/JavaScript</li>
+                <li>AI/ML engineering with Python</li>
+                <li>Cloud architecture and DevOps</li>
+                <li>Database design and optimization</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="skills-content" class="hidden">
+        <div class="mb-4">
+            <div class="text-xl highlight">TECHNICAL SKILLS</div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <div class="text-lg success">Languages & Frameworks</div>
+                <ul class="list-disc pl-5 mt-2">
+                    <li>Python (Core for AI, automation)</li>
+                    <li>TypeScript/JavaScript (Full-stack dev)</li>
+                    <li>SQL/NoSQL (PostgreSQL, MongoDB)</li>
+                    <li>GraphQL (API communication)</li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="text-lg success">AI/ML</div>
+                <ul class="list-disc pl-5 mt-2">
+                    <li>LangChain (LLM-based apps)</li>
+                    <li>LlamaIndex (RAG)</li>
+                    <li>TensorFlow/PyTorch (ML/DL)</li>
+                    <li>OpenAI API (GPT models)</li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="text-lg success">Cloud & DevOps</div>
+                <ul class="list-disc pl-5 mt-2">
+                    <li>AWS, GCP, Azure</li>
+                    <li>Docker, Kubernetes</li>
+                    <li>Terraform (Infrastructure as code)</li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="text-lg success">Databases</div>
+                <ul class="list-disc pl-5 mt-2">
+                    <li>PostgreSQL, MongoDB</li>
+                    <li>Redis, ElasticSearch</li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="text-lg success">Architecture & Patterns</div>
+                <ul class="list-disc pl-5 mt-2">
+                    <li>Singleton, Microservices</li>
+                    <li>Event-Driven, Clean Architecture</li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="text-lg success">CI/CD & Testing</div>
+                <ul class="list-disc pl-5 mt-2">
+                    <li>GitLab CI, GitHub Actions</li>
+                    <li>pytest, Jest, Mocha</li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="text-lg success">Collaboration & Project Management</div>
+                <ul class="list-disc pl-5 mt-2">
+                    <li>Jira, Confluence, Slack</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="projects-content" class="hidden">
+        <div class="mb-4">
+            <div class="text-xl highlight">PROJECTS</div>
+        </div>
+        
+        <div class="mb-4">
+            <div class="text-lg success">AI-Powered Knowledge Base</div>
+            <div class="mt-2">
+                <span class="info">Tech:</span> Python, LangChain, LlamaIndex, OpenAI, FastAPI
+            </div>
+            <div class="mt-1">
+                Built a RAG system for enterprise documentation with semantic search and Q&A capabilities.
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <div class="text-lg success">Cloud-Native Microservices Platform</div>
+            <div class="mt-2">
+                <span class="info">Tech:</span> TypeScript, Node.js, Kubernetes, Terraform, AWS
+            </div>
+            <div class="mt-1">
+                Designed and implemented a scalable microservices architecture with CI/CD pipelines.
+            </div>
+        </div>
+        
+        <div class="mb-4">
+            <div class="text-lg success">Real-Time Analytics Dashboard</div>
+            <div class="mt-2">
+                <span class="info">Tech:</span> React, GraphQL, PostgreSQL, Redis, ElasticSearch
+            </div>
+            <div class="mt-1">
+                Developed a high-performance dashboard with real-time data visualization.
+            </div>
+        </div>
+    </div>
+    
+    <div id="contact-content" class="hidden">
+        <div class="mb-4">
+            <div class="text-xl highlight">CONTACT</div>
+        </div>
+        
+        <div class="mb-4">
+            <div class="text-lg success">Let's connect!</div>
+            <div class="mt-2">
+                <i class="fas fa-envelope mr-2"></i> <span class="command">email@example.com</span>
+            </div>
+            <div class="mt-2">
+                <i class="fab fa-github mr-2"></i> <span class="command">github.com/yourusername</span>
+            </div>
+            <div class="mt-2">
+                <i class="fab fa-linkedin mr-2"></i> <span class="command">linkedin.com/in/yourprofile</span>
+            </div>
+            <div class="mt-2">
+                <i class="fas fa-globe mr-2"></i> <span class="command">yourwebsite.com</span>
+            </div>
+        </div>
+    </div>
+    
+    <div id="help-content" class="hidden">
+        <div class="mb-4">
+            <div class="text-xl highlight">AVAILABLE COMMANDS</div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <div class="command">about</div>
+                <div class="text-gray-400">- Display information about me</div>
+            </div>
+            <div>
+                <div class="command">skills</div>
+                <div class="text-gray-400">- Show my technical skills</div>
+            </div>
+            <div>
+                <div class="command">projects</div>
+                <div class="text-gray-400">- List my notable projects</div>
+            </div>
+            <div>
+                <div class="command">contact</div>
+                <div class="text-gray-400">- Get my contact information</div>
+            </div>
+            <div>
+                <div class="command">clear</div>
+                <div class="text-gray-400">- Clear the terminal</div>
+            </div>
+            <div>
+                <div class="command">help</div>
+                <div class="text-gray-400">- Show this help message</div>
+            </div>
         </div>
     </div>
 
-    <div class="section">
-        <h2>🔍 About Me</h2>
-        <ul>
-            <li>🌐 Open to job opportunities worldwide 🌎</li>
-            <li>🧩 Enthusiast of modern cloud architectures, microservices, and object-oriented design</li>
-            <li>📈 Striving to make impactful contributions with scalable solutions</li>
-            <li>🌱 Currently learning advanced TypeScript, OOP, and design patterns</li>
-        </ul>
-    </div>
-
-    <footer>
-        Looking forward to connecting and collaborating!
-    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('command-input');
+            const output = document.getElementById('output');
+            const inputLine = document.getElementById('input-line');
+            
+            const commands = {
+                'about': 'about-content',
+                'skills': 'skills-content',
+                'projects': 'projects-content',
+                'contact': 'contact-content',
+                'help': 'help-content'
+            };
+            
+            function processCommand() {
+                const command = input.value.trim().toLowerCase();
+                
+                // Create a new line for the command
+                const commandLine = document.createElement('div');
+                commandLine.className = 'flex items-start mb-2';
+                commandLine.innerHTML = `
+                    <span class="text-green-500 mr-2">$</span>
+                    <span class="flex-1">${command}</span>
+                `;
+                output.insertBefore(commandLine, output.lastElementChild);
+                
+                // Process the command
+                if (command === 'clear') {
+                    output.innerHTML = `
+                        <div class="flex items-start mb-2">
+                            <span class="text-green-500 mr-2">$</span>
+                            <span id="input-line" class="flex-1"></span>
+                        </div>
+                    `;
+                    inputLine = document.getElementById('input-line');
+                } 
+                else if (commands[command]) {
+                    const content = document.getElementById(commands[command]).innerHTML;
+                    const response = document.createElement('div');
+                    response.className = 'mb-4';
+                    response.innerHTML = content;
+                    output.insertBefore(response, output.lastElementChild);
+                } 
+                else if (command) {
+                    const error = document.createElement('div');
+                    error.className = 'mb-4 error';
+                    error.textContent = `Command not found: ${command}. Type 'help' for available commands.`;
+                    output.insertBefore(error, output.lastElementChild);
+                }
+                
+                // Clear input and scroll to bottom
+                input.value = '';
+                output.scrollTop = output.scrollHeight;
+            }
+            
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    processCommand();
+                }
+            });
+            
+            // Initial help message
+            const initialHelp = document.createElement('div');
+            initialHelp.className = 'mb-4';
+            initialHelp.innerHTML = document.getElementById('help-content').innerHTML;
+            output.insertBefore(initialHelp, output.lastElementChild);
+            
+            // Focus the input
+            input.focus();
+        });
+    </script>
 </body>
 </html>
